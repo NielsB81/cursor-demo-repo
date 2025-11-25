@@ -123,6 +123,24 @@ input[type="text"]:focus {
 .basket-img {
   transition: transform 0.22s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+}
+.logo-location {
+  font-size: 0.95rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(241, 212, 155, 0.8);
+  padding: 0.1rem 0.9rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(92, 50, 0, 0.12);
+}
 .logo-img:hover,
 .basket-img:hover {
   transform: rotate(-3deg) scale(1.04);
