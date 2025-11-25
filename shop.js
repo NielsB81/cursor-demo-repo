@@ -1,30 +1,30 @@
 const PRODUCTS = {
-  apple: { name: "Apple", emoji: "🍏" },
-  banana: { name: "Banana", emoji: "🍌" },
-  lemon: { name: "Lemon", emoji: "🍋" },
-  pineapple_pizza: { name: "Pineapple Pizza", emoji: "🍕" },
+  doner: { name: "Classic Döner", emoji: "🥙" },
+  chicken_wrap: { name: "Spicy Chicken Wrap", emoji: "🌯" },
+  falafel: { name: "Falafel Feast", emoji: "🧆" },
+  loaded_fries: { name: "Loaded Halal Fries", emoji: "🍟" },
 };
 
 const BUNDLES = {
-  healthy_mix: {
-    name: "Healthy Mix",
-    products: ["apple", "banana"],
-    emoji: "🍏🍌"
+  night_shift_duo: {
+    name: "Night Shift Duo",
+    products: ["doner", "chicken_wrap"],
+    emoji: "🥙🌯"
   },
-  citrus_lovers: {
-    name: "Citrus Lovers",
-    products: ["lemon", "apple"],
-    emoji: "🍋🍏"
+  veggie_crush: {
+    name: "Veggie Crush",
+    products: ["falafel", "loaded_fries"],
+    emoji: "🧆🍟"
   },
-  tropical_party: {
-    name: "Tropical Party",
-    products: ["banana", "lemon"],
-    emoji: "🍌🍋"
+  grill_party: {
+    name: "Grill Party",
+    products: ["doner", "falafel"],
+    emoji: "🥙🧆"
   },
-  fruit_feast: {
-    name: "Fruit Feast",
-    products: ["apple", "banana", "lemon"],
-    emoji: "🍏🍌🍋"
+  street_feast: {
+    name: "Street Feast Platter",
+    products: ["doner", "chicken_wrap", "falafel"],
+    emoji: "🥙🌯🧆"
   }
 };
 

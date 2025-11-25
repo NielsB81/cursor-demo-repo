@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fresh Apple - Fruit Shop</title>
+    <title>Spicy Chicken Wrap - Midnight Kebab House</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -13,18 +13,18 @@
           <img
             src="img/fruit-shop-logo.webp"
             class="logo-img"
-            alt="Fruit Shop Logo"
+            alt="Midnight Kebab House Logo"
           />
           <span class="logo-location" aria-label="Store location">Utrecht</span>
           <span class="products-text" style="text-align: center">
-            View Products
+            Open Menu
           </span>
         </a>
         <nav role="navigation" aria-label="Main navigation">
           <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="bundles.html">Bundles</a>
-            <a href="personality-quiz.html" class="quiz-link">🌟 Fruit Quiz</a>
+            <a href="personality-quiz.html" class="quiz-link">🔥 Flavor Quiz</a>
           </div>
           <a
             href="basket.html"
@@ -44,18 +44,18 @@
     </header>
     <main id="main-content" role="main">
       <div class="content-box" style="text-align: center">
-        <div style="font-size: 4rem" role="img" aria-label="Apple emoji">
-          🍏
+        <div style="font-size: 4rem" role="img" aria-label="Spicy Chicken Wrap emoji">
+          🌯
         </div>
-        <h1>Apple</h1>
+        <h1>Spicy Chicken Wrap</h1>
         <div class="product-desc" aria-label="Product description">
-          Keeps the doctor away (unless you throw it at them).
+          Harissa-marinated chicken, charred peppers, and mint yogurt rolled tight in grilled flatbread.
         </div>
         <div style="margin-top: 1.2rem">
           <button
             id="addToBasket"
             class="cart-action-btn"
-            aria-label="Add Apple to basket"
+            aria-label="Add Spicy Chicken Wrap to basket"
           >
             Add to Basket
           </button>
@@ -64,14 +64,14 @@
       </div>
     </main>
     <script src="shop.js"></script>
-    <script src="fruit-facts.js"></script>
+    <script src="menu-facts.js"></script>
     <script>
       document.getElementById("addToBasket").onclick = function () {
-        addToBasket("apple");
+        addToBasket("chicken_wrap");
       };
       
       // Add facts section
-      document.getElementById("factsContainer").innerHTML = createFactsSection("apple");
+      document.getElementById("factsContainer").innerHTML = createFactsSection("chicken_wrap");
       initFactsCarousel();
     </script>
   </body>
