@@ -52,6 +52,24 @@ const FRUIT_FACTS = {
       "Supports skin health"
     ],
     season: "Peak season from November to March"
+  },
+  pineapple_pizza: {
+    nutrition: {
+      calories: "285 kcal",
+      fiber: "2.3g",
+      vitamin_c: "18% DV"
+    },
+    facts: [
+      "Hawaiian pizza was invented in Canada by a Greek chef in 1962",
+      "Pineapple caramelizes in a hot oven, adding sweetness without extra sugar",
+      "Pizza is the ultimate sharing food—perfect for fruit fans who crave comfort"
+    ],
+    benefits: [
+      "Balances sweet pineapple with savory cheese",
+      "Adds a tropical twist to pizza night",
+      "Pairs perfectly with every fruit smoothie on the menu"
+    ],
+    season: "Best served whenever pizza cravings strike"
   }
 };
 
