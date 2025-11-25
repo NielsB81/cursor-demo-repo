@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fruit Subscription - Fruit Shop</title>
+  <title>Nightly Kebab Subscription - Midnight Kebab House</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header role="banner">
     <div class="header-center">
       <a href="index.html" class="logo" aria-label="Go to homepage">
-        <img src="img/fruit-shop-logo.webp" class="logo-img" alt="Fruit Shop Logo" />
+        <img src="img/fruit-shop-logo.webp" class="logo-img" alt="Midnight Kebab House Logo" />
         <span class="logo-location" aria-label="Store location">Utrecht</span>
-        <span class="products-text" style="text-align: center">View Products</span>
+        <span class="products-text" style="text-align: center">Open Menu</span>
       </a>
       <nav role="navigation" aria-label="Main navigation">
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="bundles.html">Bundles</a>
-          <a href="personality-quiz.html" class="quiz-link">🌟 Fruit Quiz</a>
-          <a href="subscription.html" class="subscription-link">🍎 Subscription</a>
+          <a href="personality-quiz.html" class="quiz-link">🔥 Flavor Quiz</a>
+          <a href="subscription.html" class="subscription-link">🕛 Nightly Drop</a>
         </div>
         <a href="basket.html" class="basket-link" aria-label="View shopping basket" style="position: relative">
           <img src="img/basket-icon.png" class="basket-img" alt="Shopping basket icon" />
@@ -30,20 +30,21 @@
   </header>
   <main id="main-content" role="main">
     <div class="content-box" style="max-width: 500px; margin: 2rem auto;">
-      <h1>Personalized Fruit Subscription</h1>
+      <h1>Nightly Kebab Drop</h1>
       <form id="subscriptionForm">
-        <label for="boxSize">Box Size:</label>
+        <label for="boxSize">Combo Size:</label>
         <select id="boxSize" name="boxSize" required>
           <option value="">Select size</option>
-          <option value="small">Small (5 fruits)</option>
-          <option value="medium">Medium (10 fruits)</option>
-          <option value="large">Large (20 fruits)</option>
+          <option value="small">Solo (1 item + fries)</option>
+          <option value="medium">Duo (2 items + fries)</option>
+          <option value="large">Squad (4 items + fries)</option>
         </select>
         <br /><br />
-        <label>Choose your fruits:</label><br />
-        <input type="checkbox" name="fruits" value="Apple" /> Apple 🍏<br />
-        <input type="checkbox" name="fruits" value="Banana" /> Banana 🍌<br />
-        <input type="checkbox" name="fruits" value="Lemon" /> Lemon 🍋<br />
+        <label>Choose your bites:</label><br />
+        <input type="checkbox" name="dishes" value="Classic Döner" /> Classic Döner 🥙<br />
+        <input type="checkbox" name="dishes" value="Spicy Chicken Wrap" /> Spicy Chicken Wrap 🌯<br />
+        <input type="checkbox" name="dishes" value="Falafel Feast" /> Falafel Feast 🧆<br />
+        <input type="checkbox" name="dishes" value="Loaded Halal Fries" /> Loaded Halal Fries 🍟<br />
         <br />
         <label for="frequency">Delivery Frequency:</label>
         <select id="frequency" name="frequency" required>
@@ -71,16 +72,16 @@
       const frequency = document.getElementById('frequency').value;
       const name = document.getElementById('name').value;
       const address = document.getElementById('address').value;
-      const fruits = Array.from(document.querySelectorAll('input[name="fruits"]:checked')).map(cb => cb.value);
-      if (!boxSize || !frequency || !name || !address || fruits.length === 0) {
-        alert('Please fill in all fields and select at least one fruit.');
+      const dishes = Array.from(document.querySelectorAll('input[name="dishes"]:checked')).map(cb => cb.value);
+      if (!boxSize || !frequency || !name || !address || dishes.length === 0) {
+        alert('Please fill in all fields and select at least one dish.');
         return;
       }
-      const subscription = { boxSize, frequency, name, address, fruits, date: new Date().toISOString() };
+      const subscription = { boxSize, frequency, name, address, dishes, date: new Date().toISOString() };
       let subs = JSON.parse(localStorage.getItem('subscriptions') || '[]');
       subs.push(subscription);
       localStorage.setItem('subscriptions', JSON.stringify(subs));
-      document.getElementById('confirmationMsg').innerText = 'Thank you for subscribing! Your personalized fruit box will be delivered soon.';
+      document.getElementById('confirmationMsg').innerText = 'Thanks for subscribing! Your midnight kebab drop is en route.';
       document.getElementById('confirmationMsg').style.display = 'block';
       document.getElementById('subscriptionForm').reset();
     };

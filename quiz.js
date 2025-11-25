@@ -1,151 +1,126 @@
-// Fruit Personality Quiz with World-Changing Features
+// Midnight Kebab House Flavor Quiz
 
-// Global Statistics (would be fetched from server in production)
 const globalStats = {
     totalQuizzesTaken: 0,
     personalityDistribution: {
-        banana: 0,
-        apple: 0,
-        lemon: 0
+        doner: 0,
+        chicken_wrap: 0,
+        falafel: 0
     },
     impactStats: {
-        treesPlanted: 0,
-        waterSaved: 0,
-        carbonReduced: 0
+        ordersShared: 0,
+        sauceLevel: 0,
+        playlistsQueued: 0
     }
 };
 
 const quizQuestions = [
     {
-        question: "How do you usually start your day?",
+        question: "How do you kick off a release-night session?",
         options: [
-            { text: "With lots of energy", personality: "banana", impact: "energyConscious" },
-            { text: "Taking it slow and steady", personality: "apple", impact: "localProduce" },
-            { text: "With a zesty attitude", personality: "lemon", impact: "waterSaving" }
+            { text: "Sync the squad, review the plan, stay zen", personality: "doner", impact: "steadyFlow" },
+            { text: "Light the fire, tackle blockers head-on", personality: "chicken_wrap", impact: "fireStarter" },
+            { text: "Check vibes, share snacks, boost morale", personality: "falafel", impact: "teamCaptain" }
         ],
-        fact: "Did you know? The way you start your day can affect your food choices and environmental impact!"
+        fact: "Late-night focus hits different when you match food energy to squad energy."
     },
     {
-        question: "What's your ideal weekend activity?",
+        question: "Pick your ideal collaboration style:",
         options: [
-            { text: "Sports and outdoor activities", personality: "banana", impact: "activeLifestyle" },
-            { text: "Reading a book in the garden", personality: "apple", impact: "sustainableLiving" },
-            { text: "Hosting a party", personality: "lemon", impact: "socialImpact" }
+            { text: "Deep work with crisp status updates", personality: "doner", impact: "calmAnchor" },
+            { text: "Pair-programming marathons with spicy banter", personality: "chicken_wrap", impact: "boldMoves" },
+            { text: "Facilitate, mediate, and keep everyone hydrated", personality: "falafel", impact: "comfortGuardian" }
         ],
-        fact: "Fun fact: Outdoor activities can reduce your carbon footprint compared to indoor entertainment!"
+        fact: "Teams ship faster when someone owns the energy in the room."
     },
     {
-        question: "How would your friends describe you?",
+        question: "What soundtrack keeps you locked in?",
         options: [
-            { text: "Energetic and fun", personality: "banana", impact: "communityEngagement" },
-            { text: "Reliable and wise", personality: "apple", impact: "mentorship" },
-            { text: "Bold and refreshing", personality: "lemon", impact: "innovation" }
+            { text: "Lo-fi beats & mint tea", personality: "doner", impact: "vibeCurator" },
+            { text: "Bass-heavy drops that rattle the monitors", personality: "chicken_wrap", impact: "adrenaline" },
+            { text: "Eclectic mix + crowd pleasers for drive-by singalongs", personality: "falafel", impact: "socialSpark" }
         ],
-        fact: "Did you know? Your personality type can influence your environmental awareness!"
+        fact: "Music changes how we taste food and how we debug."
     },
     {
-        question: "What's your approach to environmental challenges?",
+        question: "Production is on fire. What happens next?",
         options: [
-            { text: "Taking immediate action", personality: "banana", impact: "directAction" },
-            { text: "Planning sustainable solutions", personality: "apple", impact: "longTermPlanning" },
-            { text: "Inspiring others to change", personality: "lemon", impact: "socialInfluence" }
+            { text: "Triage, prioritize, keep commits atomic", personality: "doner", impact: "dataDriven" },
+            { text: "Grab the torch, deploy hotfixes, own the aftermath", personality: "chicken_wrap", impact: "speedRunner" },
+            { text: "Rally the crew, communicate, celebrate the win", personality: "falafel", impact: "communityHero" }
         ],
-        fact: "Amazing fact: Individual actions, when multiplied, create significant environmental impact!"
+        fact: "Every outage needs a calm strategist, a fearless sprinter, and a people-first anchor."
     }
 ];
 
-const fruitPersonalities = {
-    banana: {
-        name: "Energetic Banana",
-        description: "You're full of energy and always ready for adventure! Like a banana, you provide instant vitality and bring joy to those around you.",
-        recommendations: ["Healthy Mix Bundle", "Tropical Party Bundle"],
-        healthBenefits: [
-            "Natural energy booster",
-            "Rich in potassium for heart health",
-            "Perfect pre-workout snack"
+const kebabPersonalities = {
+    doner: {
+        name: "Calm Döner Strategist",
+        description: "You’re the steady flame on the rotisserie—consistent, reliable, and quietly powerful. People lean on you when chaos hits.",
+        combos: ["Night Shift Duo", "Street Feast Platter"],
+        powerUps: [
+            "Prep mise en place before crunch time",
+            "Keep mint ayran chilled for the crew",
+            "Serve patch notes with garlic yogurt smoothness"
         ],
-        environmentalImpact: {
-            positive: "Bananas are one of the most efficient fruits in terms of water usage per calorie!",
-            action: "By choosing organic bananas, you support sustainable farming practices."
+        nightImpact: {
+            positive: "You bring structure to shipping marathons and never skip documentation.",
+            action: "Share your checklists so the rest of the team can coast on your calm energy."
         },
-        seasonalTip: getCurrentSeasonTip('banana')
+        tip: getCurrentSeasonTip('doner')
     },
-    apple: {
-        name: "Wise Apple",
-        description: "You're dependable and bring wisdom to every situation. Like an apple, you're a classic choice that never goes out of style.",
-        recommendations: ["Healthy Mix Bundle", "Fruit Feast Bundle"],
-        healthBenefits: [
-            "Rich in antioxidants",
-            "Supports gut health",
-            "Natural blood sugar regulation"
+    chicken_wrap: {
+        name: "Spicy Wrap Instigator",
+        description: "Bold, fast, and a little reckless—in the best way. You add heat to every standup and love turning blockers into momentum.",
+        combos: ["Night Shift Duo", "Grill Party"],
+        powerUps: [
+            "Rotate playlists to keep adrenaline high",
+            "Pair deployments with extra chili oil",
+            "Lead the hype when new features land"
         ],
-        environmentalImpact: {
-            positive: "Apple trees help combat climate change by absorbing CO2!",
-            action: "Supporting local apple orchards reduces transportation emissions."
+        nightImpact: {
+            positive: "Your energy keeps tickets moving and bugs afraid.",
+            action: "Channel that spice into focused bursts so the squad can draft behind you."
         },
-        seasonalTip: getCurrentSeasonTip('apple')
+        tip: getCurrentSeasonTip('chicken_wrap')
     },
-    lemon: {
-        name: "Zesty Lemon",
-        description: "You bring a fresh perspective and aren't afraid to stand out! Like a lemon, you add excitement to any situation.",
-        recommendations: ["Citrus Lovers Bundle", "Fruit Feast Bundle"],
-        healthBenefits: [
-            "Boosts immune system",
-            "Natural detoxifier",
-            "Supports skin health"
+    falafel: {
+        name: "Falafel Heartbeat",
+        description: "You’re crispy on the outside, all empathy inside. You balance teams, notice burnout, and make sure everyone eats.",
+        combos: ["Veggie Crush", "Street Feast Platter"],
+        powerUps: [
+            "Schedule hydration breaks",
+            "Stack loyalty stamps for the squad",
+            "Keep tahini and bug tracker comments flowing"
         ],
-        environmentalImpact: {
-            positive: "Lemon trees are excellent air purifiers!",
-            action: "Using whole lemons reduces food waste and maximizes environmental benefits."
+        nightImpact: {
+            positive: "You make overnight launches feel human.",
+            action: "Keep checking in—your softness is the best uptime insurance."
         },
-        seasonalTip: getCurrentSeasonTip('lemon')
+        tip: getCurrentSeasonTip('falafel')
     }
 };
 
 let currentQuestion = 0;
 let personalityScores = {
-    banana: 0,
-    apple: 0,
-    lemon: 0
+    doner: 0,
+    chicken_wrap: 0,
+    falafel: 0
 };
 let impactScore = 0;
 
-function getCurrentSeasonTip(fruit) {
-    const season = getCurrentSeason();
+function getCurrentSeasonTip(persona) {
     const tips = {
-        banana: {
-            spring: "Perfect time for smoothies!",
-            summer: "Great for outdoor picnics!",
-            fall: "Add to your morning routine!",
-            winter: "Ideal indoor ripening season!"
-        },
-        apple: {
-            spring: "Try last season's storage apples!",
-            summer: "Early varieties are coming!",
-            fall: "Peak apple season - buy local!",
-            winter: "Perfect for warm apple dishes!"
-        },
-        lemon: {
-            spring: "Add to spring detox water!",
-            summer: "Make fresh lemonade!",
-            fall: "Great for immune system!",
-            winter: "Peak citrus season!"
-        }
+        doner: "Pair each commit with a sip of mint ayran to keep that calm streak alive.",
+        chicken_wrap: "Balance the heat: spicy wrap in one hand, rollback plan in the other.",
+        falafel: "Prep extra tahini—someone always needs a morale boost around 2 AM."
     };
-    return tips[fruit][season];
-}
-
-function getCurrentSeason() {
-    const month = new Date().getMonth();
-    if (month >= 2 && month <= 4) return 'spring';
-    if (month >= 5 && month <= 7) return 'summer';
-    if (month >= 8 && month <= 10) return 'fall';
-    return 'winter';
+    return tips[persona];
 }
 
 function startQuiz() {
     currentQuestion = 0;
-    personalityScores = { banana: 0, apple: 0, lemon: 0 };
+    personalityScores = { doner: 0, chicken_wrap: 0, falafel: 0 };
     impactScore = 0;
     displayQuestion();
     document.getElementById('quiz-start').style.display = 'none';
@@ -189,18 +164,18 @@ function selectOption(personality, impact) {
 
 function calculateImpactScore(impact) {
     const impactScores = {
-        energyConscious: 10,
-        localProduce: 15,
-        waterSaving: 12,
-        activeLifestyle: 8,
-        sustainableLiving: 20,
-        socialImpact: 15,
-        communityEngagement: 18,
-        mentorship: 15,
-        innovation: 12,
-        directAction: 20,
-        longTermPlanning: 18,
-        socialInfluence: 15
+        steadyFlow: 18,
+        fireStarter: 22,
+        teamCaptain: 16,
+        calmAnchor: 17,
+        boldMoves: 23,
+        comfortGuardian: 15,
+        vibeCurator: 14,
+        adrenaline: 19,
+        socialSpark: 18,
+        dataDriven: 20,
+        speedRunner: 24,
+        communityHero: 16
     };
     return impactScores[impact] || 0;
 }
@@ -210,89 +185,88 @@ function updateGlobalStats() {
     const result = Object.entries(personalityScores).reduce((a, b) => a[1] > b[1] ? a : b)[0];
     globalStats.personalityDistribution[result]++;
     
-    // Simulate environmental impact (would be real calculations in production)
-    globalStats.impactStats.treesPlanted += Math.floor(impactScore / 50);
-    globalStats.impactStats.waterSaved += impactScore * 2;
-    globalStats.impactStats.carbonReduced += impactScore / 10;
+    globalStats.impactStats.ordersShared += Math.floor(impactScore / 40);
+    globalStats.impactStats.sauceLevel += Math.round(impactScore * 1.5);
+    globalStats.impactStats.playlistsQueued += Math.floor(impactScore / 8);
 }
 
 function showResult() {
     const result = Object.entries(personalityScores).reduce((a, b) => a[1] > b[1] ? a : b)[0];
-    const personality = fruitPersonalities[result];
+    const personality = kebabPersonalities[result];
     const resultContainer = document.getElementById('quiz-result');
     
     document.getElementById('quiz-questions').style.display = 'none';
     resultContainer.style.display = 'block';
     
     resultContainer.innerHTML = `
-        <h2>Your Fruit Personality: ${personality.name}!</h2>
+        <h2>Your Kebab Persona: ${personality.name}!</h2>
         <p class="personality-description">${personality.description}</p>
         
         <div class="impact-section">
-            <h3>🌍 Your Environmental Impact</h3>
-            <p>${personality.environmentalImpact.positive}</p>
-            <p class="impact-action">👉 ${personality.environmentalImpact.action}</p>
+            <h3>🌙 Your Night Shift Energy</h3>
+            <p>${personality.nightImpact.positive}</p>
+            <p class="impact-action">👉 ${personality.nightImpact.action}</p>
             <div class="impact-stats">
                 <div class="impact-stat">
-                    <span class="impact-number">+${Math.floor(impactScore / 50)}</span>
-                    <span class="impact-label">Trees Worth</span>
+                    <span class="impact-number">+${Math.floor(impactScore / 40)}</span>
+                    <span class="impact-label">Orders Shared</span>
                 </div>
                 <div class="impact-stat">
-                    <span class="impact-number">${impactScore * 2}L</span>
-                    <span class="impact-label">Water Saved</span>
+                    <span class="impact-number">${Math.round(impactScore * 1.5)}</span>
+                    <span class="impact-label">Sauce Drizzles</span>
                 </div>
                 <div class="impact-stat">
-                    <span class="impact-number">${(impactScore / 10).toFixed(1)}kg</span>
-                    <span class="impact-label">CO₂ Reduced</span>
+                    <span class="impact-number">${Math.floor(impactScore / 8)}</span>
+                    <span class="impact-label">Playlists Queued</span>
                 </div>
             </div>
         </div>
 
         <div class="health-section">
-            <h3>💪 Health Benefits</h3>
+            <h3>🔧 Power-Ups</h3>
             <ul>
-                ${personality.healthBenefits.map(benefit => `
-                    <li>${benefit}</li>
+                ${personality.powerUps.map(tip => `
+                    <li>${tip}</li>
                 `).join('')}
             </ul>
         </div>
 
         <div class="seasonal-section">
-            <h3>🌱 Seasonal Tip</h3>
-            <p>${personality.seasonalTip}</p>
+            <h3>🍽 Pro Tip</h3>
+            <p>${personality.tip}</p>
         </div>
 
         <div class="recommendations">
-            <h3>🎁 Recommended Bundles for You:</h3>
+            <h3>🎁 Recommended Combos:</h3>
             <ul>
-                ${personality.recommendations.map(bundle => `
+                ${personality.combos.map(bundle => `
                     <li><a href="bundles.html">${bundle}</a></li>
                 `).join('')}
             </ul>
         </div>
 
         <div class="global-impact">
-            <h3>🌎 Join the Global Fruit Movement</h3>
-            <p>You're part of a community making a difference!</p>
+            <h3>🌎 Join the Late-Night Table</h3>
+            <p>You're part of the crew keeping Utrecht fueled after midnight.</p>
             <div class="global-stats">
                 <div class="stat">
                     <span class="number">${globalStats.totalQuizzesTaken}</span>
-                    <span class="label">Quizzes Taken</span>
+                    <span class="label">Personas Claimed</span>
                 </div>
                 <div class="stat">
-                    <span class="number">${globalStats.impactStats.treesPlanted}</span>
-                    <span class="label">Trees Impact</span>
+                    <span class="number">${globalStats.impactStats.ordersShared}</span>
+                    <span class="label">Orders Shared</span>
                 </div>
                 <div class="stat">
-                    <span class="number">${Math.floor(globalStats.impactStats.waterSaved)}L</span>
-                    <span class="label">Water Saved</span>
+                    <span class="number">${globalStats.impactStats.playlistsQueued}</span>
+                    <span class="label">Playlists Queued</span>
                 </div>
             </div>
         </div>
 
         <div class="share-section">
             <h3>📢 Share Your Impact</h3>
-            <p>Inspire others to join the sustainable fruit movement!</p>
+            <p>Drop your persona on social and flex your midnight appetite.</p>
             <div class="share-buttons">
                 <button onclick="shareResult('twitter')" class="share-button twitter">Share on Twitter</button>
                 <button onclick="shareResult('facebook')" class="share-button facebook">Share on Facebook</button>
@@ -305,8 +279,8 @@ function showResult() {
 
 function shareResult(platform) {
     const result = Object.entries(personalityScores).reduce((a, b) => a[1] > b[1] ? a : b)[0];
-    const personality = fruitPersonalities[result];
-    const shareText = `I'm a ${personality.name} 🌟 Making a positive impact through sustainable fruit choices! Take the quiz to discover your fruit personality and environmental impact! 🌍🍎🍌🍋 #FruitPersonality #Sustainability`;
+    const personality = kebabPersonalities[result];
+    const shareText = `I'm a ${personality.name} at Midnight Kebab House 🌙🔥 Find your late-night kebab persona and keep the grill vibes going! #KebabPersonality #MidnightKebabHouse`;
     
     const shareUrls = {
         twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`,
